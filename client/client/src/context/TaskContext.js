@@ -3,11 +3,13 @@ import axios from "axios";
 
 export const TaskContext = createContext();
 
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/tasks").then(res => setTasks(res.data));
+    axios.get(`${BASE_URL}/api/tasks").then(res => setTasks(res.data));
   }, []);
 
   return (

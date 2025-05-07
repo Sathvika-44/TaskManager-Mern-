@@ -4,6 +4,7 @@ import Register from "./Components/Register";
 import TaskList from "./Components/TaskList";
 import PrivateRoute from "./Components/PrivateRoute";
 import Navbar from "./Components/Navbar";
+import ErrorPage from "./Components/Error";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             </PrivateRoute>
           } 
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
   );

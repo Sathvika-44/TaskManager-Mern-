@@ -1,6 +1,7 @@
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const registerUser = async (userData) => {
-  const response = await fetch("http://localhost:5000/api/auth/register", {
+  const response = await fetch(`${BASE_URL}/api/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
@@ -11,7 +12,7 @@ export const registerUser = async (userData) => {
 
 export const loginUser = async (loginData) => {
   try {
-    const response = await axios.post("http://localhost:5000/api/auth/login", loginData);
+    const response = await axios.post(`${BASE_URL}/api/auth/login`, loginData);
     
     const { token, user } = response.data; // Ensure backend returns user details
 

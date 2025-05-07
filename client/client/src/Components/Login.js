@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, { email, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userName", res.data.user.name); // Store user name
       navigate("/tasks");
@@ -23,7 +25,8 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded">
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
       <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
       <form onSubmit={handleLogin} className="space-y-4">
         {errorMsg && (
@@ -52,6 +55,7 @@ const Login = () => {
         <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">Login</button>
         
       </form>
+     </div>
     </div>
   );
 };
