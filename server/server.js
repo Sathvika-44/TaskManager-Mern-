@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import taskRoutes from "../routes/task_routes.js";
-import authRoutes from "../routes/auth_routes.js";
+import taskRoutes from "./routes/task_routes.js";
+import authRoutes from "./routes/auth_routes.js";
 
 dotenv.config();
 
