@@ -4,9 +4,8 @@
   "description": "task manager backend",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-  "vercel-build": "echo 'No build step required for backend'"
- },
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "",
   "license": "ISC",
   "type": "module",
