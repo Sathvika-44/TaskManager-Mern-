@@ -55,9 +55,9 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-// app.listen(PORT, async () => {
-//   await connectDB();
-//   console.log(`🚀 Server running on port ${PORT}`);
-// });
+app.listen(PORT, async () => {
+  await connectDB();
+  console.log(`🚀 Server running on port ${PORT}`);
+});
 
-module.exports = app;
+//module.exports = app;
