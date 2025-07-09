@@ -9,7 +9,7 @@ export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/api/tasks").then(res => setTasks(res.data));
+    axios.get(`${BASE_URL}/api/tasks`).then(res => setTasks(res.data));
   }, []);
 
   return (
