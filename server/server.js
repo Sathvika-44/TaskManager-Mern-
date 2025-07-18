@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import taskRoutes from "./routes/task_routes.js";
 import authRoutes from "./routes/auth_routes.js";
+import connectDB from "./config/connectDB.js";
 
 dotenv.config();
 
@@ -32,16 +33,30 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
 // Connect to MongoDB
-const connectDB = async () => {
+// const connectDB = async () => {
+//   try {
+//     await mongoose.connect(MONGO_URI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     });
+//     console.log("✅ MongoDB Connected");
+//   } catch (error) {
+//     console.error("❌ MongoDB Connection Error:", error.message);
+//     process.exit(1); // exit on DB failure
+//   }
+// };
+
+const startServer = async () => {
   try {
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await connectDB();
     console.log("✅ MongoDB Connected");
-  } catch (error) {
-    console.error("❌ MongoDB Connection Error:", error.message);
-    process.exit(1); // exit on DB failure
+
+    app.listen(process.env.PORT || 5000, () => {
+      console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
+    });
+  } catch (err) {
+    console.error("❌ DB Connection Error:", err.message);
+    process.exit(1);
   }
 };
 
@@ -54,10 +69,12 @@ app.get("/", (req, res) => {
   res.send("🚀 Task Manager API is running");
 });
 
+startServer();
+
 // Start Server
-app.listen(PORT, async () => {
-  await connectDB();
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// app.listen(PORT, async () => {
+//   await connectDB();
+//   console.log(`🚀 Server running on port ${PORT}`);
+// });
 
 export default app;
