@@ -22,6 +22,8 @@ const Register = () => {
         email,
         password,
       });
+      
+      console.log("Registering with:", { name, email, password });
 
       if (data.token) {
         localStorage.setItem("token", data.token);
