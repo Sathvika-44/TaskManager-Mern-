@@ -16,6 +16,12 @@ export const registerUser = async (req, res) => {
     await newUser.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
+     if (err.code === 11000) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+    
+    console.error("🔥 Registration Error:", err.message);
+    console.error(err);
     res.status(500).json({ message: "Server error" });
   }
 };
