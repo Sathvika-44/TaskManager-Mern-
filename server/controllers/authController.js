@@ -29,7 +29,7 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       console.error("❌ User not found:", email);
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(400).json({ message: "Invalid email" });
     }
 
     // ✅ Compare password securely
