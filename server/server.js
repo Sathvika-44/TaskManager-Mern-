@@ -79,10 +79,13 @@ dotenv.config();
 
 const app = express();
 
+const CLIENT_URL=process.env.CLIENT_URL
+
 // ✅ CORS Configuration
 const allowedOrigins = [
   "http://localhost:3000",
   "https://task-manager-mern-client.vercel.app",
+  CLIENT_URL,
 ];
 
 const corsOptions = {
