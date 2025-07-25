@@ -101,15 +101,13 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); 
 app.use(express.json());
 app.use(cookieParser());
 
 // Health check route (optional outside startServer)
-app.get("/", (req, res) => {
-  res.send("🚀 Task Manager API is running");
-});
+// app.get("/", (req, res) => {
+//   res.send("🚀 Task Manager API is running");
+// });
 
 // ✅ Move routes inside after DB connection is successful
 const startServer = async () => {
@@ -117,9 +115,16 @@ const startServer = async () => {
     await connectDB();
     console.log("✅ MongoDB Connected");
 
+    app.use(cors(corsOptions));
+    app.options("*", cors(corsOptions)); 
+
     // Register routes only after DB is connected
     app.use("/api/tasks", taskRoutes);
     app.use("/api/auth", authRoutes);
+
+    app.get("/", (req, res) => {
+      res.send("🚀 Task Manager API is running");
+    });
 
     app.listen(process.env.PORT || 5000, () => {
       console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
