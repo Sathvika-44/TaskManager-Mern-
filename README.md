@@ -16,27 +16,40 @@ Tech Stack:
 - Database: MongoDB Atlas
 - Others: Postman, Vercel, Render, Git
 
-API Endpoints Overview:
-Method	Endpoint	Description
+**API Endpoints Overview:**
+
+**Method**	 **Endpoint**	        **Description**
+
 POST	/api/auth/register	Register a new user
+
 POST	/api/auth/login	Login existing user
+
 GET	/api/tasks	Get all tasks (auth)
+
 POST	/api/tasks	Create a new task
+
 PUT	/api/tasks/:id	Update a task
+
 DELETE	/api/tasks/:id	Delete a task
 
-Setup Environment Variables:
+**Setup Environment Variables:**
 
-Backend .env file:
-PORT=5000
+**Backend .env file:**
+
+PORT=5000 
+
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET=your_jwt_secret
+
 CLIENT_URL=your_client_url
 
-Frontend .env file:
+**Frontend .env file:**
+
 REACT_APP_API_BASE_URL=your_server_url
 
-Running the App:
+**Running the App:**
 
 Backend: npm start
+
 Frontend: npm start
